@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soniya Agrawal | AI Governance & Policy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #1a1a1a;
+            --paper: #fafaf8;
+            --muted: #6b6b6b;
+            --accent: #2d4a3e;
+            --accent-light: #e8eeeb;
+            --border: #e5e5e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--paper);
+            color: var(--ink);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--paper);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--ink);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-intro {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.05;
+            margin-bottom: 2rem;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--muted);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .hero-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-links a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding-bottom: 0.25rem;
+            border-bottom: 1.5px solid var(--ink);
+            transition: all 0.2s ease;
+        }
+
+        .hero-links a:hover {
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        /* About Section */
+        #about {
+            border-top: 1px solid var(--border);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--muted);
+        }
+
+        .about-text p:first-child {
+            color: var(--ink);
+            font-size: 1.1rem;
+        }
+
+        .about-details {
+            padding-left: 2rem;
+            border-left: 1px solid var(--border);
+        }
+
+        .detail-group {
+            margin-bottom: 2.5rem;
+        }
+
+        .detail-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+        }
+
+        /* Academic Section */
+        #academic {
+            border-top: 1px solid var(--border);
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3rem;
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .experience-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-org {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .experience-desc {
+            color: var(--muted);
+        }
+
+        /* Published Work Section */
+        #published {
+            border-top: 1px solid var(--border);
+            background: linear-gradient(180deg, var(--paper) 0%, #f5f5f3 100%);
+            max-width: none;
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .published-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-tab {
+            padding: 0.5rem 1.25rem;
+            border: 1px solid var(--border);
+            background: var(--paper);
+            border-radius: 2rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-tab:hover,
+        .filter-tab.active {
+            background: var(--ink);
+            color: var(--paper);
+            border-color: var(--ink);
+        }
+
+        .articles-grid {
+            display: grid;
+            gap: 1px;
+            background: var(--border);
+        }
+
+        .article-item {
+            background: var(--paper);
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 2rem;
+            align-items: start;
+            text-decoration: none;
+            color: inherit;
+            transition: background 0.2s ease;
+        }
+
+        .article-item:hover {
+            background: var(--accent-light);
+        }
+
+        .article-category {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            line-height: 1.35;
+            margin-bottom: 0.75rem;
+        }
+
+        .article-excerpt {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .article-date {
+            font-size: 0.8rem;
+            color: var(--muted);
+            white-space: nowrap;
+        }
+
+        .article-arrow {
+            font-size: 1.25rem;
+            color: var(--muted);
+            transition: transform 0.2s ease;
+        }
+
+        .article-item:hover .article-arrow {
+            transform: translateX(4px);
+            color: var(--ink);
+        }
+
+        /* Contact Section */
+        #contact {
+            border-top: 1px solid var(--border);
+            text-align: center;
+            padding: 8rem 2rem;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-text {
+            color: var(--muted);
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.2s ease;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-details {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid var(--border);
+                padding-top: 2rem;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .article-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .article-date {
+                order: -1;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-intro,
+        .hero h1,
+        .hero-subtitle,
+        .hero-links {
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero h1 { animation-delay: 0.1s; }
+        .hero-subtitle { animation-delay: 0.2s; }
+        .hero-links { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">SA</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#academic">Academic Work</a></li>
+                <li><a href="#published">Published Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-intro">AI Governance Researcher & Policy Analyst</p>
+            <h1>Soniya Agrawal</h1>
+            <p class="hero-subtitle">
+                Master of Public Policy candidate at UC Berkeley's Goldman School, specializing in AI governance. Former award-winning investigative journalist with 600+ published articles. Bridging the gap between technology, policy, and public accountability.
+            </p>
+            <div class="hero-links">
+                <a href="#about">Learn More</a>
+                <a href="#published">Read My Work</a>
+                <a href="https://linkedin.com/in/soniyaagrawal" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <p class="section-label">Background</p>
+            <h2 class="section-title">About Me</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>
+                    I'm a second-year Master of Public Policy student at UC Berkeley's Goldman School of Public Policy, where I specialize in AI governance and technology policy. My work sits at the intersection of investigative journalism, data analysis, and public policy.
+                </p>
+                <p>
+                    Currently, I serve as a Research Analyst at TechEquity Collaborative, where I investigate Big Tech lobbying patterns and regulatory capture in California's AI governance landscape. My research has analyzed over $57 million in lobbying expenditures and examined opposition tactics to legislation like SB 1047, AB 1018, and SB 53.
+                </p>
+                <p>
+                    Before graduate school, I spent five years as Senior Correspondent at ThePrint, India's largest digital news organization, where I published over 600 articles covering technology policy, algorithmic bias, and government accountability. I was awarded the International Press Institute Award in 2022 for my investigative reporting on COVID-19.
+                </p>
+                <p>
+                    My journalism consistently focused on how technology systems impact marginalized communities—from exposing algorithmic bias in India's Swayam educational platform to investigating the edtech sector's accountability gaps.
+                </p>
+            </div>
+            <div class="about-details">
+                <div class="detail-group">
+                    <p class="detail-label">Current Focus</p>
+                    <p class="detail-value">AI Governance & Regulatory Policy</p>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Education</p>
+                    <p class="detail-value">MPP, UC Berkeley Goldman School of Public Policy (Expected 2025)</p>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Recognition</p>
+                    <p class="detail-value">International Press Institute Award, 2022</p>
+                </div>
+                <div class="detail-group">
+                    <p class="detail-label">Languages</p>
+                    <p class="detail-value">English, Hindi, Spanish</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academic & Professional Work -->
+    <section id="academic">
+        <div class="section-header">
+            <p class="section-label">Experience</p>
+            <h2 class="section-title">Academic & Professional Work</h2>
+        </div>
+        
+        <div class="experience-item">
+            <div class="experience-date">2024 – Present</div>
+            <div class="experience-content">
+                <h3>Research Analyst</h3>
+                <p class="experience-org">TechEquity Collaborative</p>
+                <p class="experience-desc">Investigating Big Tech lobbying patterns and regulatory capture in California's AI governance landscape. Analyzed $57 million in lobbying expenditures and industry coordination tactics opposing AI legislation including SB 1047, AB 1018, and SB 53.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-date">2024 – Present</div>
+            <div class="experience-content">
+                <h3>Data Analyst</h3>
+                <p class="experience-org">UC Berkeley Global Rights Innovation Lab</p>
+                <p class="experience-desc">Conducting data analysis and research on global rights issues, applying quantitative methods to policy questions at the intersection of technology and human rights.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-date">2025 – Present</div>
+            <div class="experience-content">
+                <h3>Engagement Lead, Data & Policy Blog</h3>
+                <p class="experience-org">Cambridge University Press</p>
+                <p class="experience-desc">Leading engagement strategy for the Data & Policy journal's blog, bridging academic research with public discourse on data governance and policy implications.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-date">2023 – Present</div>
+            <div class="experience-content">
+                <h3>Graduate Student Instructor</h3>
+                <p class="experience-org">UC Berkeley</p>
+                <p class="experience-desc">Teaching econometrics and economics courses to 120+ students, developing curriculum materials and mentoring students in quantitative policy analysis.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-date">2018 – 2023</div>
+            <div class="experience-content">
+                <h3>Senior Correspondent</h3>
+                <p class="experience-org">ThePrint</p>
+                <p class="experience-desc">Published 600+ articles on technology policy, algorithmic bias, education, and government accountability. Led investigative reporting on COVID-19 pandemic (IPI Award 2022) and exposed systematic issues in India's digital education platforms.</p>
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-date">2016 – 2018</div>
+            <div class="experience-content">
+                <h3>Teach For India Fellow</h3>
+                <p class="experience-org">Teach For India, Ahmedabad</p>
+                <p class="experience-desc">Taught in an underprivileged school, developing innovative curriculum approaches and building foundational literacy skills among marginalized students.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Published Work Section -->
+    <section id="published">
+        <div class="published-inner">
+            <div class="section-header">
+                <p class="section-label">Journalism</p>
+                <h2 class="section-title">Selected Technology Coverage</h2>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">All</button>
+                <button class="filter-tab" data-filter="ai">AI & Machine Learning</button>
+                <button class="filter-tab" data-filter="edtech">EdTech & Digital Learning</button>
+                <button class="filter-tab" data-filter="policy">Tech Policy</button>
+            </div>
+
+            <div class="articles-grid">
+                <a href="https://theprint.in/india/iim-ahmedabad-study-of-130-companies-finds-3-of-4-indian-businesses-cant-leverage-ai-to-boost-profits/1668822/" target="_blank" class="article-item" data-category="ai">
+                    <div>
+                        <p class="article-category">AI & Business</p>
+                        <h3 class="article-title">IIM-Ahmedabad Study Finds 3 of 4 Indian Businesses Can't Leverage AI to Boost Profits</h3>
+                        <p class="article-excerpt">A report by IIM-A and Boston Consulting Group reveals that despite growing AI expenditure, most Indian companies lack the maturity to convert AI investments into profit gains.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jul 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/education/no-need-for-jee-iit-guwahati-starts-online-b-sc-for-data-science-artificial-intelligence/1654253/" target="_blank" class="article-item" data-category="ai edtech">
+                    <div>
+                        <p class="article-category">AI Education</p>
+                        <h3 class="article-title">No Need for JEE: IIT Guwahati Starts Online B.Sc for Data Science, Artificial Intelligence</h3>
+                        <p class="article-excerpt">IIT Guwahati partners with Coursera to launch a four-year online program in Data Science and AI, democratizing access to elite technical education.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jul 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/how-haryana-up-mp-are-leading-the-way-in-regulating-edtech-content-in-govt-schools/1450311/" target="_blank" class="article-item" data-category="edtech policy">
+                    <div>
+                        <p class="article-category">EdTech Regulation</p>
+                        <h3 class="article-title">How Haryana, UP & MP Are Leading the Way in Regulating EdTech Content in Government Schools</h3>
+                        <p class="article-excerpt">State governments create frameworks to vet AI-powered educational software, ensuring EdTech content aligns with curriculum standards.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Mar 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/tech/inaccurate-references-cumbersome-say-students-is-chatgpt-losing-its-sheen/1411179/" target="_blank" class="article-item" data-category="ai">
+                    <div>
+                        <p class="article-category">AI Tools</p>
+                        <h3 class="article-title">'Inaccurate References & Cumbersome': Why ChatGPT Might Be Losing Its Sheen</h3>
+                        <p class="article-excerpt">Months after its meteoric rise, students and professionals report growing frustrations with ChatGPT's accuracy and usability limitations.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Mar 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/feature/byjus-to-lido-indias-edtech-sector-is-leaking-complaints-unchecked-power-no-trust/1384795/" target="_blank" class="article-item" data-category="edtech">
+                    <div>
+                        <p class="article-category">EdTech Investigation</p>
+                        <h3 class="article-title">Byju's to Lido: India's EdTech Sector Is Leaking Complaints — Unchecked Power, No Trust</h3>
+                        <p class="article-excerpt">An investigation into thousands of consumer complaints against EdTech giants, revealing systemic accountability gaps in the sector.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Feb 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/budget/budget-2023-modi-govt-puts-focus-on-upgrading-skills-tech-ai-centres-training-scheme/1321460/" target="_blank" class="article-item" data-category="ai policy">
+                    <div>
+                        <p class="article-category">AI Policy</p>
+                        <h3 class="article-title">Budget 2023: Modi Govt Puts Focus on Upgrading Skills & Tech, 3 New AI Centres to Come Up</h3>
+                        <p class="article-excerpt">Analysis of India's budget allocation for AI infrastructure, including new centers of excellence and skill development programs.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Feb 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/education/plagiarism-challenge-or-opportunity-ai-platform-chatgpt-has-academics-tech-analysts-divided/1314504/" target="_blank" class="article-item" data-category="ai edtech">
+                    <div>
+                        <p class="article-category">AI & Academia</p>
+                        <h3 class="article-title">Plagiarism Challenge or Opportunity?: AI Platform ChatGPT Has Academics & Tech Analysts Divided</h3>
+                        <p class="article-excerpt">As ChatGPT gains traction among students, educational institutions grapple with questions of academic integrity and the future of learning.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jan 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/education/teachers-gender-bias-can-make-girls-maths-performance-drop-but-not-english-finds-study/1309321/" target="_blank" class="article-item" data-category="edtech">
+                    <div>
+                        <p class="article-category">Algorithmic Bias</p>
+                        <h3 class="article-title">Teachers' Gender Bias Can Make Girls' Maths Performance Drop, But Not English, Finds Study</h3>
+                        <p class="article-excerpt">Research reveals how implicit bias affects educational outcomes, with implications for AI-powered learning systems.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jan 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/why-swayam-portals-a-dampener-for-modi-govts-online-learning-dream-3-cr-signed-up-4-finished/1308349/" target="_blank" class="article-item" data-category="edtech policy">
+                    <div>
+                        <p class="article-category">Digital Platform Analysis</p>
+                        <h3 class="article-title">Why Swayam Portal's a Dampener for Modi Govt's Online Learning Dream — 3 Cr Signed Up, 4% Finished</h3>
+                        <p class="article-excerpt">Investigation into India's flagship MOOC platform reveals systemic issues with course completion, infrastructure, and user experience.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jan 2023</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/education/20-drop-in-maths-performance-after-class-7-as-students-dont-understand-words-edtech-app-finds/948974/" target="_blank" class="article-item" data-category="edtech ai">
+                    <div>
+                        <p class="article-category">AI-Driven Learning</p>
+                        <h3 class="article-title">20% Drop in Maths Performance After Class 7 as Students Don't Understand Words, EdTech App Finds</h3>
+                        <p class="article-excerpt">AI-powered analysis of 75,000 students reveals the critical role of language comprehension in mathematical learning outcomes.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">May 2022</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+
+                <a href="https://theprint.in/india/education/57-girl-students-85-boys-interested-in-pursuing-stem-as-career-survey-finds/687370/" target="_blank" class="article-item" data-category="edtech">
+                    <div>
+                        <p class="article-category">STEM & Technology</p>
+                        <h3 class="article-title">57% Girl Students, 85% Boys Interested in Pursuing STEM as Career, Survey Finds</h3>
+                        <p class="article-excerpt">Multi-city survey reveals persistent gender gaps in technology career aspirations and the lack of female role models in STEM fields.</p>
+                    </div>
+                    <div>
+                        <p class="article-date">Jul 2021</p>
+                        <span class="article-arrow">→</span>
+                    </div>
+                </a>
+            </div>
+
+            <p style="text-align: center; margin-top: 3rem; color: var(--muted);">
+                <a href="https://theprint.in/author/soniya-agrawal/" target="_blank" style="color: var(--ink); font-weight: 500;">View all 665 articles at ThePrint →</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="contact-title">Let's Connect</h2>
+        <p class="contact-text">
+            I'm always interested in conversations about AI governance, technology policy, and the intersection of journalism and public accountability.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:soniya.agrawal@berkeley.edu" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+                Email
+            </a>
+            <a href="https://linkedin.com/in/soniyaagrawal" target="_blank" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+            </a>
+            <a href="https://twitter.com/soniyaagrawal" target="_blank" class="contact-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                </svg>
+                Twitter
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Soniya Agrawal. Built with purpose.</p>
+    </footer>
+
+    <script>
+        // Filter functionality for articles
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Update active tab
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                
+                // Filter articles
+                document.querySelectorAll('.article-item').forEach(article => {
+                    if (filter === 'all' || article.dataset.category.includes(filter)) {
+                        article.style.display = 'grid';
+                    } else {
+                        article.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
